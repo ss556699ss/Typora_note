@@ -8,7 +8,7 @@
 
 https://zerojudge.tw/ShowProblem?problemid=e283
 
-![image-20220731222225560](Python _IO.assets/image-20220731222225560.png)
+![image-20220731222225560](PythonIO.assets/image-20220731222225560.png)
 
 有兩種方式解決，第二種速度比較快，所以遇到TLE時可以換試第二種。
 
@@ -54,7 +54,7 @@ for i in sys.stdin:
     print(i)
 ```
 
-![image-20220731223206678](Python _IO.assets/image-20220731223206678.png)
+![image-20220731223206678](PythonIO.assets/image-20220731223206678.png)
 
 可以看到每一次印完都會多一行，這時我可以使用.rstrip()來消除。
 
@@ -64,7 +64,7 @@ for i in sys.stdin:
     print(i.rstrip())
 ```
 
-![image-20220731223400383](Python _IO.assets/image-20220731223400383.png)
+![image-20220731223400383](PythonIO.assets/image-20220731223400383.png)
 
 以上面圖片的例子，我們可以使用 for i in sys.sdin來獲取每一筆測資的第一行，之後的n行使用readline()來獲取整行輸入。
 
