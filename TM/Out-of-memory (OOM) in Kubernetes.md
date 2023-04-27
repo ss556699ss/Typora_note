@@ -74,4 +74,89 @@ kubectl describe <node-name>
 
 [基于节点状态添加污点](https://kubernetes.io/zh-cn/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-nodes-by-condition)
 
-#### 待實驗
+#### 待實驗 k3d
+
+#### 目的
+
+實驗 當發生節點狀態轉換時，是否過5分鐘才會回復狀態
+
+`Guaranteed` 和 ` Burstable` 的 POD 是具有 `node.kubernetes.io/memory-pressure` 容忍度的。
+
+#### 準備實驗環境
+
+前置:
+
+* docker
+* k3d
+* kubectl
+
+建立集群，1 master、 2 worker
+``` sh
+sudo k3d cluster create test -s 1 -a 2	#建立集群
+sudo k3d kubeconfig merge test
+# /root/.k3d/kubeconfig-test.yaml 
+export KUBECONFIG=/root/.k3d/kubeconfig-test.yaml	#使得kubectl指向指定kubeconfig
+```
+
+查看集群
+
+``` sh
+sudo kubectl get noode
+```
+
+```yaml
+apiVersion: k3d.io/v1alpha2
+kind: Simple
+name: mycluster
+servers: 1 
+agents: 2
+image: rancher/k3s:v1.20.4-k3s1
+options:
+  k3s: # options passed on to K3s itself
+    extraServerArgs: # additional arguments passed to the `k3s server` command; same as `--k3s-server-arg`
+      - --memory=1G
+    extraAgentArgs: 
+ 	  - --memory=1G
+ 	# addditional arguments passed to the `k3s agent` command; same as `--k3s-agent-arg`
+ 	
+k3d cluster create test --servers 1 --agents 2 --agents-memory 1G        
+```
+
+
+
+
+
+## 驅逐根據
+
+[驱逐信号](https://kubernetes.io/zh-cn/docs/concepts/scheduling-eviction/node-pressure-eviction/) 文章裡的 [腳本](https://kubernetes.io/zh-cn/examples/admin/resource/memory-available.sh) 給出了 kubernetes 是如何計算出 `memory.available`
+
+``` sh
+# 文章的公式為 
+memory.available := node.status.capacity[memory] - node.stats.memory.workingSet
+# 從腳本可以得知 
+node.status.capacity[memory] #來自 cat /proc/meminfo | grep MemTotal | awk '{print $2}'
+node.stats.memory.workingSet 
+#計算自 memory_usage_in_bytes - memory_total_inactive_file
+memory_usage_in_bytes #來自 cat /sys/fs/cgroup/memory/memory.usage_in_bytes
+memory_total_inactive_file # 來自 cat /sys/fs/cgroup/memory/memory.stat | grep total_inactive_file | awk '{print $2}'
+```
+
+疑問 這些指標來自於 根cgroup ，表示說 因為驅逐是發生在 Allocatable 不夠時 不理解的是 
+`node.status.capacity[memory] ` 並不是 Allocatable  ，待查
+
+
+
+[节点可分配资源](https://kubernetes.io/zh-cn/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable)
+
+![image-20230417135613304](./Out-of-memory (OOM) in Kubernetes.assets/image-20230417135613304.png)
+
+--kube-reserved: 通過規定 `cgroup` 限制來實現
+
+所以 pod 的驅逐發生在 
+
+```sh
+Capacity - --kube-reserved < pod 驅逐 < allocatable
+vt5o`標誌確保一旦節點可用存低於指定值 即驅逐，同時也間接的規定了 pod 的 'allocatable' 內存大小
+--system-reserved 可選
+```
+

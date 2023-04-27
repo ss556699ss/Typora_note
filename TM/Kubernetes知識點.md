@@ -4,6 +4,34 @@
 
 
 
+```mermaid
+mindmap
+	root((Kubernetes))
+    	部屬
+      		POD
+      			requests
+      			limits
+      		Deployment
+      		DaemonSet
+    	服務
+      		Service
+      		Ingress
+    	卷
+    		volumeMounts
+    		volumes
+    			非持久性儲存
+      				emptyDir
+      			持久性儲存
+      				hostpath
+      	配置
+      		ConfigMap
+    		Secret
+    	進階
+    		網路原理
+    		容器原理
+    		OOM
+```
+
 
 
 ## Kubernetes Resource
