@@ -91,7 +91,7 @@ cat /proc/<pid>/oom_score	#進程分數
 
 `BestEffort` > `Burstable` > `Guaranteed`
 
-![image-20230410150819491](./OOM 與 Evicted.assets/image-20230410150819491.png)
+![image-20230410150819491](./OOM與Evicted.assets/image-20230410150819491.png)
 
 [节点内存不足行为](https://kubernetes.io/zh-cn/docs/concepts/scheduling-eviction/node-pressure-eviction/)
 
@@ -115,7 +115,7 @@ cat /proc/kmsg
 
 ### [Node Capacity](https://kubernetes.io/zh-cn/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable)
 
-![image-20230417135613304](./OOM 與 Evicted.assets/image-20230417135613304.png)
+![image-20230417135613304](./OOM與Evicted.assets/image-20230417135613304.png)
 
 
 
