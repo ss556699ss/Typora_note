@@ -1,4 +1,4 @@
-# OOM 與 Evicted
+# OOM與Evicted
 
 ## Overcommit
 
@@ -223,13 +223,13 @@ command: ['./project', 'run', 'mem', '2000']
 # 2000 可以修改為 想要使整體 node 記憶體到達的容量
 ```
 
-![image-20230502102929402](./OOM 與 Evicted.assets/image-20230502102929402.png)
+![image-20230502102929402](./OOM與Evicted.assets/image-20230502102929402.png)
 
-![image-20230502103018204](./OOM 與 Evicted.assets/image-20230502103018204.png)
+![image-20230502103018204](./OOM與Evicted.assets/image-20230502103018204.png)
 
 5 分鐘過後
 
-![image-20230502103441817](./OOM 與 Evicted.assets/image-20230502103441817.png)
+![image-20230502103441817](./OOM與Evicted.assets/image-20230502103441817.png)
 
 
 
