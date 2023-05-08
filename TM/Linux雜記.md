@@ -146,6 +146,39 @@ lsblk
 sudo xfs_growfs /
 ```
 
+# PostgreSQL
+
+## [安裝](https://www.postgresql.org/download/linux/ubuntu/)
+
+## 配置
+
+```sh
+# 切換到 postgres 帳戶
+sudo -i -u postgres
+# 立即訪問 PostgreSQ
+psql
+
+exit
+# 在  postgres 帳戶下 創建腳色
+createuser --interactive
+
+# 配置外網連結
+sudo vi /etc/postgresql/<version>/main/postgresql.conf
+# 找到  listen_addresses
+listen_addresses = '*'
+
+#####################
+sudo vi /etc/postgresql/<version>/main/pg_hba.conf 
+# 最下面增加
+host    all             all             0.0.0.0/0               trust
+
+########################
+# 建立資ㄌㄧㄠ
+
+```
+
+
+
 
 
 
