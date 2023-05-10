@@ -26,6 +26,21 @@ sequenceDiagram
 
 
 
+# 配置目錄
+
+容器訊息
+``` sh
+/var/run/mydocker/%s/
+```
+
+容器文件系統
+
+```sh
+/root/<container-name>
+```
+
+
+
 # Namspace
 
 ## Mount Namespace
@@ -146,6 +161,8 @@ cat /proc/$pid/mountinfo
 # 備忘清單
 
 * container 設定檔，log 是使用container name 有衝突風險
+* 再調整 container.DeleteWorkSpace(containerInfo.Volume, containerInfo.Name)
+* 目錄的設計
 
 # 參考資源
 

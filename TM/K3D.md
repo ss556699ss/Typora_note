@@ -7,7 +7,8 @@
 
 ``` sh
 sudo k3d cluster create test -s 1 -a 2	#建立集群
-sudo k3d kubeconfig merge test
+sudo k3d kubeconfig merge test	# 產生指定集群的kubeconfig
+# 並印出生成路徑
 # /root/.k3d/kubeconfig-test.yaml 
 export KUBECONFIG=/root/.k3d/kubeconfig-test.yaml	#使得kubectl指向指定kubeconfig
 ```
