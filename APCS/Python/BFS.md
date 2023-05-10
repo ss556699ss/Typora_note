@@ -1,5 +1,56 @@
 # BFS
 
+---
+
+## 圖的儲存
+
+在電腦上儲存圖得方式有兩種
+
+``` python
+1. adjacency matrix
+鄰接矩陣    (二維陣列)  少用
+    查詢 有沒有路 O(1)
+         子節點 O(n)    n:節點數量
+    0   1   2   3   4   5
+0   1   0   1   0   1   1    
+1   0   1   0   0   1   1
+2   1   0   1   1   1   0
+3   0   0   1   1   0   0
+4   1   1   1   0   1   1
+5   1   1   0   0   1   1
+
+a:
+for i in range(6):
+    if a[0][i] == 1:
+        print(i)
+
+2. adjacency list
+鄰接串列
+
+0: 2 4 5
+1: 4 5
+2: 3 0 4
+3: 2
+4: 0 1 2
+5: 0 1 4
+優勢: 快速找子節點
+字典
+dic = {0: [2 ,4 ,5],1: [4,5]....}
+
+串列    索引值:節點 值:子節點
+a = [[2,4,5],[4,5],[],[],....]
+```
+
+
+
+
+
+
+
+---
+
+
+
 bfs 廣度優先搜索
 
 核心思想 : 擴散
@@ -169,5 +220,69 @@ matrix = [ ["s", 1 , 2 ,"x"],
 bfs(0,0)
 ```
 
+---
 
+##　最短距離
+
+``` python
+def bfs(i,j):
+    queue = [[i,j]]
+    path = [[0]*4 for i in range(5)]
+    path[0][0] = 1
+    ans = 0
+    while queue:
+        size = len(queue)
+
+        while size != 0:
+            node = queue.pop(0) #s
+            
+            print(matrix[node[0]][node[1]])
+            for d in dire:
+                i = node[0] + d[0]
+                j = node[1] + d[1]
+                if 0 <= i < 5 and 0 <= j < 4 and path[i][j] != 1:
+                    if matrix[i][j] != "x":
+                        path[i][j] = 1
+                        queue.append([i,j])
+            size -= 1
+        ans += 1
+matrix = [["s", 1 , 2 ,"x"],
+           [ 3 ,"x", 4 , 5 ],
+           [ 6 , 7 , 8 ,"x"],
+           [ 9 ,"x", 10, 11],
+           [ 12, 13, 14,'e']]
+dire = [[1,0],[0,1],[-1,0],[0,-1]]
+
+bfs(0,0)
+
+
+
+
+
+```
+
+---
+
+## 結論
+
+(1) 走訪所有的點
+
+(2) 判斷兩點之間有沒有路徑
+
+(3) 判斷兩點之間最短距離
+
+缺點: 不好紀錄路徑 
+
+---
+
+## 練習題
+
+練習題
+
+闖關路線 bfs (最短路)
+d094: Q-7-5. 闖關路線
+https://judge.tcirc.tw/ShowProblem?problemid=d094
+
+蓋步道 bfs&二分搜
+https://zerojudge.tw/ShowProblem?problemid=j125
 
