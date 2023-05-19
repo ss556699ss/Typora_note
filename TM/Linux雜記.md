@@ -112,6 +112,9 @@ sudo fdisk /dev/sda
 n	# 創建新分區
 #剩下都輸入 enter 默認值
 
+# 最後輸入 w 保存
+w
+
 # 查看是否創建成功
 lsblk
 ```
@@ -144,6 +147,8 @@ lsblk
 ``` shell
 # 按照文件系統類型擴展
 sudo xfs_growfs /
+# 查看是否ˋ
+df -h
 ```
 
 # PostgreSQL
@@ -179,7 +184,11 @@ host    all             all             0.0.0.0/0               trust
 
 
 
+# Java
 
+vscode 無法 f5
+
+**F1 -> Java: clean the Java language server workspace**
 
 
 

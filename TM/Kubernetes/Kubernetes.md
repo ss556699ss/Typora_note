@@ -202,7 +202,9 @@ M = D(ET, C)
 
 #### 數字簽名:
 
-發送方: S, 接收方: R, 公鑰: P, 私鑰: C, 公信力: CA, 數字簽名 sig, 身分證申請: CSR
+發送方: S,	接收方: R, 	公鑰: P, 	私鑰: C, 	公信力: CA, 	數字簽名 sig, 					身分證申請: CSR
+
+產生證書
 
 ``` sh
 1. R: CSR = P + ID	#R 把 ID(身分證或域名) + 公鑰 合為身分證申請
@@ -238,8 +240,28 @@ M = D(ET, C)
 
 
 
+### 雙向 TLS 認證
+
+這個是用來解決單向認證之後服務端要驗證客戶端時，通常是由客戶端手動輸入帳號密碼來驗證的，在分布式的架構下是很難進行這樣的手動認證，所以可以使用雙向 TLS 認證來解決。
+雙向TLS認證只是在單向認證之後多了客戶端傳送客戶端身分證。
+
 ### 參考來源:
 [TLS](https://github.com/k8sp/tls)
+[一文带你彻底厘清 Kubernetes 中的证书工作机制](https://zhuanlan.zhihu.com/p/142990931)
+
+
+
+### kubernetes 證書
+
+在 k8s 的組件通信都是使用 tls 雙向加密的方式通信，以下圖為通信所需要的證書。
+
+![img](https://raw.githubusercontent.com/roger9491/Typora_note/main/img/v2-57fef8953dc08fbcab7718df47be4c7e_720w.webp)
+
+
+
+## 實驗
+
+
 
 ## RBAC
 
