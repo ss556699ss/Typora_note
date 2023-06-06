@@ -151,6 +151,14 @@ sudo xfs_growfs /
 df -h
 ```
 
+# WSL2
+
+[win 訪問 wsl2](https://github.com/microsoft/WSL/issues/5539)	
+
+![image-20230523140217459](https://raw.githubusercontent.com/roger9491/Typora_note/main/img/image-20230523140217459.png)
+
+
+
 # PostgreSQL
 
 ## [安裝](https://www.postgresql.org/download/linux/ubuntu/)

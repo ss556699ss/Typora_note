@@ -47,6 +47,8 @@ sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 swapoff -a
 ```
 
+---
+
 ## 艱難的方式部屬 kubernetes
 
 
@@ -57,6 +59,16 @@ swapoff -a
 
 
 
+### [參考PKI 证书和要求](https://kubernetes.io/zh-cn/docs/setup/best-practices/certificates/)
+
+了解k8s
+
+1. 需要的證書
+2. 需要修改的字段
+3. 存放位置
+
+
+
 ### 建立 CA 證書
 
 ``` sh
@@ -64,7 +76,7 @@ swapoff -a
 openssl genrsa -out ca.key 2048
 
 # 使用私鑰建立CSR
-openssl req -new -key ca.key -subj "/CN=KUBERNETES-CA" -out ca.csr
+openssl req -new -key ca.key -subj "/CN=kubernetes-ca" -out ca.csr
 
 # 產生 CRT=CSR + SIG
 openssl x509 -req -in ca.csr -signkey ca.key -CAcreateserial  -out ca.crt -days 1000
@@ -87,13 +99,13 @@ openssl req -in yourfile.csr -noout -text
 
 ``` shell
 # 建立私鑰
-openssl genrsa -out ca.key 2048
+openssl genrsa -out admin.key 2048
 
 # 使用私鑰建立CSR
 openssl req -new -key admin.key -subj "/CN=admin/O=system:masters" -out admin.csr
 
 # CRT = CSR + SIG, SIG = 使用CA的私鑰加密CSR 
-openssl x509 -req -in admin.csr -CA ca.crt -CAcreateserial  -out ca.crt -days 1000
+openssl x509 -req -in admin.csr -CA ca.crt -CAcreateserial  -out admin.crt -days 1000
 ```
 
 5/19 不理解 為啥要使用 ca.crt

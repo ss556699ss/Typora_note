@@ -21,6 +21,8 @@
 ``` yaml
 apt_update: true
 apt_upgrade: true
+packages: 
+	- net-tools
 ssh_import_id:
 - gh:roger9491
  
