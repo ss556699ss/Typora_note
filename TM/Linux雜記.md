@@ -157,6 +157,13 @@ df -h
 
 ![image-20230523140217459](https://raw.githubusercontent.com/roger9491/Typora_note/main/img/image-20230523140217459.png)
 
+當 wsl 占用 io 時會消耗很多資源
+
+``` powershell
+# 殺死 wsl
+taskkill /f /im wslservice.exe
+```
+
 
 
 # PostgreSQL
@@ -198,7 +205,9 @@ vscode 無法 f5
 
 **F1 -> Java: clean the Java language server workspace**
 
+如果遇到 f5 無法編譯，或無法掃到class，以及刪掉target(它好像會按照修改過的java進行編譯
 
+所以原本的target錯的話，後面就會編譯錯了)
 
 
 

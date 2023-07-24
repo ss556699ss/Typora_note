@@ -45,3 +45,22 @@ multipass delete <vm name>
 multipass purge
 ```
 
+## 配置 password ssh
+
+``` sh
+ sudo vi /etc/ssh/sshd_config
+ # 更改  PasswordAuthentication
+ PasswordAuthentication yes
+ sudo service ssh restart
+```
+
+
+
+## [設置靜態IP](https://multipass.run/docs/configure-static-ips)
+
+
+
+## [修改現有VM的 CPU, MEMORY, DISK](https://multipass.run/docs/modify-an-instance)
+
+
+

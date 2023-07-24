@@ -9,3 +9,20 @@
 著重在 dokcker file 撰寫， pod 、 deploymenbt 、service 理解
 
 之後嘗試部屬自己寫過的應用程式
+
+``` 
+asdads
+```
+
+​	asdaasdasd
+
+d	
+
+
+
+1. sda
+
+   
+
+
+

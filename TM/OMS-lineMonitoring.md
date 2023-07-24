@@ -1050,3 +1050,39 @@
     }
 }
 ```
+
+
+
+
+
+branchent	ping 
+
+branchnet
+
+​	線路詳細資訊
+
+pingstatus
+
+​	監控時發生
+
+server 	ip + port
+
+services_conf
+
+status
+
+監控不一樣
+
+
+
+branchnet
+
+pingstatus
+
+servuces_conf
+
+status
+
+
+
+![image-20230607101555235](https://raw.githubusercontent.com/roger9491/Typora_note/main/img/image-20230607101555235.png)
