@@ -31,3 +31,13 @@ root((Kubernetes))
 		OOM
 ```
 
+k8s: 容器編排系統
+
+pod -> cri -> runc
+
+pod: 2個容器以上， 
+
+
+
+docker file -> dokcer hub
+

@@ -339,7 +339,11 @@ lsns
 lsns -t net
 ```
 
-
+## 簡化 kubectl 指令
+```shell
+echo 'alias k="kubectl"' >> ~/.bashrc
+source ~/.bashrc
+```
 
 # Debug
 

@@ -164,6 +164,12 @@ df -h
 taskkill /f /im wslservice.exe
 ```
 
+當wsl2 無法放問時
+
+```sh
+netsh winsock reset
+```
+
 
 
 # PostgreSQL
